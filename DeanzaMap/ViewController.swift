@@ -64,7 +64,7 @@ class ViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //background color setting
         let GRAY_THEME = UIColor(displayP3Red: 204 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1.0)
         view.backgroundColor = GRAY_THEME
@@ -97,6 +97,7 @@ class ViewController: UIViewController{
         if hideProgressBar == true {
             loading.invalidate()
             spinner.stopAnimating()
+            spinner.isHidden = true
             loadingBar.isHidden = true
             loadingPercent.isHidden = true
             percentSign.isHidden = true

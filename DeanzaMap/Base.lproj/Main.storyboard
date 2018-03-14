@@ -115,15 +115,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S60-OA-oTA">
-                                <rect key="frame" x="0.0" y="20" width="375" height="220"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S60-OA-oTA">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGX-qP-BK1">
                                 <rect key="frame" x="0.0" y="20" width="175" height="647"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3NA-dg-nno">
                                         <rect key="frame" x="0.0" y="40" width="175" height="647"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="heb-tx-Z49">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="heb-tx-Z49">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="647"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -227,6 +227,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="gDw-Ob-cDg"/>
                                     <constraint firstItem="zHQ-X0-N0n" firstAttribute="leading" secondItem="43O-fk-W0x" secondAttribute="leading" constant="10" id="jC4-nb-N6l"/>
                                     <constraint firstItem="zHQ-X0-N0n" firstAttribute="top" secondItem="43O-fk-W0x" secondAttribute="top" id="mnL-mg-AHo"/>
                                     <constraint firstAttribute="height" constant="30" id="pir-Ti-BZ8"/>
@@ -258,6 +259,7 @@
                         <outlet property="mapKitView" destination="S60-OA-oTA" id="Ui8-5C-MPI"/>
                         <outlet property="navigationBar" destination="43O-fk-W0x" id="5QA-z9-CuU"/>
                         <outlet property="navigationBarConstraint" destination="R5e-xg-lre" id="bY5-Uk-is4"/>
+                        <outlet property="searchDisplayController" destination="C3i-En-Fi3" id="MKc-2s-62A"/>
                         <outlet property="sideBar" destination="LGX-qP-BK1" id="e7q-T2-LYT"/>
                         <outlet property="sideBarConstraint" destination="hgW-iQ-Ttr" id="24N-0s-RCw"/>
                     </connections>
@@ -268,6 +270,14 @@
                         <action selector="panPerform:" destination="Bno-4Z-dNJ" id="ATq-1i-gkK"/>
                     </connections>
                 </panGestureRecognizer>
+                <searchDisplayController id="C3i-En-Fi3">
+                    <connections>
+                        <outlet property="delegate" destination="Bno-4Z-dNJ" id="ruX-yW-Rqm"/>
+                        <outlet property="searchContentsController" destination="Bno-4Z-dNJ" id="Y6G-ga-eeV"/>
+                        <outlet property="searchResultsDataSource" destination="Bno-4Z-dNJ" id="zpK-pr-Hw1"/>
+                        <outlet property="searchResultsDelegate" destination="Bno-4Z-dNJ" id="dTo-dj-bAx"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="116.49175412293854"/>
         </scene>

@@ -17,6 +17,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var startPin: AnnotationPin!
     var endPin: AnnotationPin!
     
+    
     // Outlet
     @IBOutlet weak var sideBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var sideBar: UIView!
@@ -24,11 +25,13 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet weak var blurSideBar: UIVisualEffectView!
     @IBOutlet weak var navigationBarConstraint: NSLayoutConstraint!
     @IBOutlet var mapKitView: MKMapView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Action
     @IBAction func changeToSearchPage(_ sender: Any) {
         performSegue(withIdentifier: "segue2", sender: self)
     }
+    
     
     // When click the menu button, it will slide out the sida bar.
     @IBAction func menuButton(_ sender: Any) {
@@ -134,10 +137,15 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //navigationBar
         navigationBar.backgroundColor = UIColor(displayP3Red: 54/255, green: 72/255, blue: 94/255, alpha: 1)
         
+        
+        
+        
+        
+        
         //mapKitView
         mapKitView.delegate = self
         mapKitView.showsScale = true
-        mapKitView.showsCompass = true
+        //mapKitView.showsCompass = true
         mapKitView.showsBuildings = true
         mapKitView.showsUserLocation = true
         mapKitView.showsPointsOfInterest = true
@@ -167,9 +175,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             }
             else if start == "atc" || destination == "ATC"{
                 sourceCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
-            }
-            else{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
             }
         }
         
