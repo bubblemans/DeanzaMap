@@ -13,16 +13,23 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     let locationManager = CLLocationManager()
     var destination: String?
+    var startPoint: String?
+    var startPin: AnnotationPin!
+    var endPin: AnnotationPin!
     
     // Outlet
-    @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var sideBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var sideBar: UIView!
+    @IBOutlet weak var navigationBar: UIView!
     @IBOutlet weak var blurSideBar: UIVisualEffectView!
     @IBOutlet weak var navigationBarConstraint: NSLayoutConstraint!
     @IBOutlet var mapKitView: MKMapView!
     
     // Action
+    @IBAction func changeToSearchPage(_ sender: Any) {
+        performSegue(withIdentifier: "segue2", sender: self)
+    }
+    
     // When click the menu button, it will slide out the sida bar.
     @IBAction func menuButton(_ sender: Any) {
         if self.sideBarConstraint.constant == 0 {
@@ -99,13 +106,17 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let displayProgressBar = segue.destination as? ViewController{
+            displayProgressBar.hideProgressBar = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //homeButton
-        homeButton.layer.cornerRadius = 7.5
+        //homeButton.layer.cornerRadius = 7.5
         
         //blurSideBar
         //blurSideBar.layer.cornerRadius = 7.5
@@ -115,14 +126,18 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         sideBar.layer.shadowColor = UIColor.black.cgColor
         sideBar.layer.shadowOpacity = 1
         sideBar.layer.shadowOffset = CGSize(width: 5, height: 5)
+        sideBar.backgroundColor = UIColor(displayP3Red: 205/255, green: 206/255, blue: 205/255, alpha: 1)
         
         //sideBarConstraint
         sideBarConstraint.constant = -175
         
+        //navigationBar
+        navigationBar.backgroundColor = UIColor(displayP3Red: 54/255, green: 72/255, blue: 94/255, alpha: 1)
+        
         //mapKitView
         mapKitView.delegate = self
         mapKitView.showsScale = true
-        //mapKitView.showsCompass = true
+        mapKitView.showsCompass = true
         mapKitView.showsBuildings = true
         mapKitView.showsUserLocation = true
         mapKitView.showsPointsOfInterest = true
@@ -137,8 +152,26 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             locationManager.startUpdatingLocation()
         }
         
+        // Set up the coordinates of the start point and end point.
         var sourceCoordinates = locationManager.location?.coordinate
         var destinationCoordinates = CLLocationCoordinate2DMake(0, 0)
+        
+        if let start = startPoint{
+            
+            if start == "library" {
+                sourceCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
+            }
+                
+            else if start == "cafe"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.320651, -122.04536)
+            }
+            else if start == "atc" || destination == "ATC"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
+            }
+            else{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
+            }
+        }
         
         if let destination = destination{
             
@@ -157,16 +190,20 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             }
         }
 
-        //destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
-        
-        //var destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
-        
+        // Annotation pin
+        startPin = AnnotationPin(title: startPoint!, subtitle: "", coordinate: sourceCoordinates!)
+        endPin = AnnotationPin(title: destination!, subtitle: "", coordinate: destinationCoordinates)
+        mapKitView.addAnnotation(startPin as! MKAnnotation)
+        mapKitView.addAnnotation(endPin as! MKAnnotation)
+
+        // Put the coordinates we just set up into startpoint and endpoint
         let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinates!)
         let destinationPlaceMark = MKPlacemark(coordinate: destinationCoordinates)
         
         let sourceItem = MKMapItem(placemark: sourcePlaceMark)
         let destinationItem = MKMapItem(placemark: destinationPlaceMark)
         
+        // Navigation
         let directionRequest = MKDirectionsRequest()
         directionRequest.source = sourceItem
         directionRequest.destination = destinationItem

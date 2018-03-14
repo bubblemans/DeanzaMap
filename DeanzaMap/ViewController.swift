@@ -14,6 +14,7 @@ class ViewController: UIViewController{
     var minValue = 0
     let maxValue = 100
     var loading = Timer()
+    var hideProgressBar: Bool?
     
     //IBOutlets
     @IBOutlet weak var loadingBar: UIProgressView!
@@ -53,8 +54,11 @@ class ViewController: UIViewController{
         if let destination = segue.destination as? SecondViewController{
             destination.destination = searchBar.text
         }
+        
+        if let start = segue.destination as? SecondViewController{
+            start.startPoint = searchBarStartPoint.text
+        }
     }
-    
     
     
     
@@ -88,6 +92,18 @@ class ViewController: UIViewController{
         //searchBarStartPoint
         searchBarStartPoint.isHidden = true
         searchBarStartPoint.placeholder = "Your location"
+        
+        //Hide the progressBar
+        if hideProgressBar == true {
+            loading.invalidate()
+            spinner.stopAnimating()
+            loadingBar.isHidden = true
+            loadingPercent.isHidden = true
+            percentSign.isHidden = true
+            searchButton.isHidden = false
+            searchBar.isHidden = false
+            searchBarStartPoint.isHidden = false
+        }
         
     }
     
