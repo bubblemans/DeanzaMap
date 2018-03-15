@@ -18,6 +18,14 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var endPin: AnnotationPin!
     
     
+    struct Location{
+        var name: String
+        var x: Double
+        var y: Double
+    }
+    var location:[Location] = []
+    
+    
     // Outlet
     @IBOutlet weak var sideBarConstraint: NSLayoutConstraint!
     @IBOutlet weak var sideBar: UIView!
@@ -30,6 +38,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     // Action
     @IBAction func changeToSearchPage(_ sender: Any) {
         performSegue(withIdentifier: "segue2", sender: self)
+    }
+    @IBAction func clickToFavorite(_ sender: Any) {
+        performSegue(withIdentifier: "segue3", sender: self)
     }
     
     
@@ -109,6 +120,21 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
     }
     
+    
+    
+    func createLocationArray(){
+        let library = Location(name: "library", x: 37.3203, y: -122.0467)
+        let cafe = Location(name: "cafe", x: 37.320651, y: -122.04536)
+        let atc = Location(name: "atc", x: 37.321018, y: -122.044512)
+        let ATC = Location(name: "ATC", x: 37.321018, y: -122.044512)
+        
+        location.append(library)
+        location.append(cafe)
+        location.append(atc)
+        location.append(ATC)
+    }
+    
+    //switch to the search but don't show the progress bar
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let displayProgressBar = segue.destination as? ViewController{
             displayProgressBar.hideProgressBar = true
