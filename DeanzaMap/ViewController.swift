@@ -25,6 +25,9 @@ class ViewController: UIViewController{
     @IBOutlet weak var searchBar: UITextField!
     @IBOutlet weak var searchBarStartPoint: UITextField!
     
+    
+    //IBAction
+    
     @IBAction func clickToNextPage(_ sender: Any) {
         performSegue(withIdentifier: "segue", sender: self)
     }

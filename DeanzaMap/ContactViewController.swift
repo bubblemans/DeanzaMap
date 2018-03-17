@@ -1,17 +1,20 @@
 //
-//  ThirdViewController.swift
+//  ContactViewController.swift
 //  DeanzaMap
 //
-//  Created by Alvin Lin on 14/03/2018.
+//  Created by Alvin Lin on 16/03/2018.
 //  Copyright © 2018 Alvin Lin. All rights reserved.
 //
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class ContactViewController: UIViewController {
+
     
-    @IBAction func clickToAbout(_ sender: Any) {
-    performSegue(withIdentifier: "segueAboutToMap", sender: self)}
+    @IBAction func clickConToMap(_ sender: Any) {
+        performSegue(withIdentifier: "segueConToMap", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +29,6 @@ class ThirdViewController: UIViewController {
     override var prefersStatusBarHidden: Bool{
         return true;
     }
-
     /*
     // MARK: - Navigation
 

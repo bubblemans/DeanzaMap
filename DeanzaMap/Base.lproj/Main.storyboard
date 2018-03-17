@@ -153,10 +153,6 @@
                                                         <constraint firstAttribute="height" constant="60" id="u3h-f9-M6E"/>
                                                     </constraints>
                                                     <state key="normal" image="pacman_favorite"/>
-                                                    <connections>
-                                                        <action selector="clickToFavorite:" destination="Bno-4Z-dNJ" eventType="touchUpInside" id="98d-Vy-faD"/>
-                                                        <segue destination="VEG-Hz-Knv" kind="show" identifier="segue3" action="showDetailViewController:sender:" id="Zab-W3-p5N"/>
-                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj4-ze-ghU">
                                                     <rect key="frame" x="12" y="248" width="180" height="34"/>
@@ -165,6 +161,10 @@
                                                         <constraint firstAttribute="height" constant="60" id="EZc-Oy-SUQ"/>
                                                     </constraints>
                                                     <state key="normal" image="pacman_about"/>
+                                                    <connections>
+                                                        <action selector="ClickToAbout:" destination="Bno-4Z-dNJ" eventType="touchUpInside" id="Wfq-AF-UQb"/>
+                                                        <segue destination="VEG-Hz-Knv" kind="showDetail" identifier="segueToAbout" id="tK0-SI-w9B"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8g-zH-lGX">
                                                     <rect key="frame" x="12" y="322" width="180" height="34"/>
@@ -173,6 +173,10 @@
                                                         <constraint firstAttribute="height" constant="60" id="v3E-a5-TBV"/>
                                                     </constraints>
                                                     <state key="normal" image="pacman_contact"/>
+                                                    <connections>
+                                                        <action selector="clickToContact:" destination="Bno-4Z-dNJ" eventType="touchUpInside" id="yJp-rZ-Z7s"/>
+                                                        <segue destination="n0x-M4-njw" kind="showDetail" identifier="segueToContact" id="pK7-Qb-zui"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPX-Ay-KJ7">
                                                     <rect key="frame" x="12" y="377" width="180" height="34"/>
@@ -276,6 +280,41 @@
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="116.49175412293854"/>
         </scene>
+        <!--Contact View Controller-->
+        <scene sceneID="wTR-jl-SgU">
+            <objects>
+                <viewController id="n0x-M4-njw" customClass="ContactViewController" customModule="DeanzaMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="865-6H-a0c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7P-Ac-HYa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="W69-MG-NA8"/>
+                                </constraints>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t9-7Z-HUd">
+                                <rect key="frame" x="10" y="10" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="clickConToMap:" destination="n0x-M4-njw" eventType="touchUpInside" id="HS9-XI-vyL"/>
+                                    <segue destination="Bno-4Z-dNJ" kind="showDetail" identifier="segueConToMap" id="HWe-04-Oup"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3t9-7Z-HUd" firstAttribute="leading" secondItem="LL2-J7-uFn" secondAttribute="leading" constant="10" id="HqN-fv-kXT"/>
+                            <constraint firstItem="3t9-7Z-HUd" firstAttribute="top" secondItem="865-6H-a0c" secondAttribute="top" constant="10" id="Qkb-pU-S36"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LL2-J7-uFn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YHp-V7-Gm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="969"/>
+        </scene>
         <!--Third View Controller-->
         <scene sceneID="avz-4J-fcZ">
             <objects>
@@ -289,9 +328,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aEl-LM-C3i"/>
                                 </constraints>
-                                <items>
-                                    <navigationItem id="sBE-92-7nd"/>
-                                </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cOT-g0-WYT">
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
@@ -303,13 +339,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ahh-DB-LNh" id="JT5-iA-XGF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8X-WD-HiP">
-                                                    <rect key="frame" x="164" y="6" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dhF-c2-ZJL">
@@ -410,11 +439,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbS-Cb-EwR">
+                                <rect key="frame" x="10" y="10" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="clickToAbout:" destination="VEG-Hz-Knv" eventType="touchUpInside" id="6E5-dg-G9R"/>
+                                    <segue destination="Bno-4Z-dNJ" kind="showDetail" identifier="segueAboutToMap" id="cdU-0x-YK5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TP4-jV-oz8" firstAttribute="trailing" secondItem="cOT-g0-WYT" secondAttribute="trailing" id="7ZJ-sL-oFy"/>
                             <constraint firstItem="cOT-g0-WYT" firstAttribute="top" secondItem="d6H-ay-zDe" secondAttribute="bottom" id="C7g-ae-9Lc"/>
+                            <constraint firstItem="AbS-Cb-EwR" firstAttribute="leading" secondItem="TP4-jV-oz8" secondAttribute="leading" constant="10" id="EH9-UC-ahW"/>
                             <constraint firstItem="d6H-ay-zDe" firstAttribute="top" secondItem="n4Y-IP-O50" secondAttribute="top" id="HMG-9n-N7C"/>
                             <constraint firstItem="d6H-ay-zDe" firstAttribute="leading" secondItem="TP4-jV-oz8" secondAttribute="leading" id="LSy-2j-NSJ"/>
                             <constraint firstItem="cOT-g0-WYT" firstAttribute="leading" secondItem="TP4-jV-oz8" secondAttribute="leading" id="iC3-3y-VSh"/>
@@ -426,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySO-r4-Am9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="118"/>
+            <point key="canvasLocation" x="1814" y="116"/>
         </scene>
     </scenes>
     <resources>
@@ -440,4 +478,7 @@
         <image name="pacman_setting" width="150" height="34"/>
         <image name="search" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HWe-04-Oup"/>
+    </inferredMetricsTieBreakers>
 </document>

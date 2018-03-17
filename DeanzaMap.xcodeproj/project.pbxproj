@@ -15,6 +15,7 @@
 		E12E1D9C2042328A003870E8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12E1D9B2042328A003870E8 /* SecondViewController.swift */; };
 		E17714812058E0B20050DF77 /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17714802058E0B20050DF77 /* AnnotationPin.swift */; };
 		E17714A32059EB970050DF77 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17714A22059EB970050DF77 /* ThirdViewController.swift */; };
+		E186663C205CD7B0008170F1 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E186663B205CD7B0008170F1 /* ContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		E177147F205756780050DF77 /* DeanzaMap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DeanzaMap-Bridging-Header.h"; sourceTree = "<group>"; };
 		E17714802058E0B20050DF77 /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
 		E17714A22059EB970050DF77 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E186663B205CD7B0008170F1 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				E12E1D82203E9AD9003870E8 /* ViewController.swift */,
 				E12E1D9B2042328A003870E8 /* SecondViewController.swift */,
 				E17714A22059EB970050DF77 /* ThirdViewController.swift */,
+				E186663B205CD7B0008170F1 /* ContactViewController.swift */,
 				E12E1D84203E9AD9003870E8 /* Main.storyboard */,
 				E12E1D87203E9AD9003870E8 /* Assets.xcassets */,
 				E12E1D89203E9AD9003870E8 /* LaunchScreen.storyboard */,
@@ -153,6 +156,7 @@
 				E17714A32059EB970050DF77 /* ThirdViewController.swift in Sources */,
 				E12E1D83203E9AD9003870E8 /* ViewController.swift in Sources */,
 				E12E1D81203E9AD9003870E8 /* AppDelegate.swift in Sources */,
+				E186663C205CD7B0008170F1 /* ContactViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

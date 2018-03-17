@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+var beginPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+var endPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+var beginName = ""
+var endName = ""
+
 class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
@@ -39,9 +44,14 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBAction func changeToSearchPage(_ sender: Any) {
         performSegue(withIdentifier: "segue2", sender: self)
     }
-    @IBAction func clickToFavorite(_ sender: Any) {
-        performSegue(withIdentifier: "segue3", sender: self)
+    @IBAction func ClickToAbout(_ sender: Any) {
+        performSegue(withIdentifier: "segueToAbout", sender: self)
     }
+    @IBAction func clickToContact(_ sender: Any) {
+        performSegue(withIdentifier: "segueToContact", sender: self)
+    }
+    
+    
     
     
     // When click the menu button, it will slide out the sida bar.
@@ -171,15 +181,16 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //mapKitView
         mapKitView.delegate = self
         mapKitView.showsScale = true
-        //mapKitView.showsCompass = true
+        mapKitView.showsCompass = false
         mapKitView.showsBuildings = true
         mapKitView.showsUserLocation = true
         mapKitView.showsPointsOfInterest = true
         
-        //Show the location and navigate the user to destination
+        // Request user's current location.
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         
+        // Get the user's location.
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -190,21 +201,71 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         var sourceCoordinates = locationManager.location?.coordinate
         var destinationCoordinates = CLLocationCoordinate2DMake(0, 0)
         
+        
         if let start = startPoint{
             
             if start == "library" {
                 sourceCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
             }
-                
             else if start == "cafe"{
                 sourceCoordinates = CLLocationCoordinate2DMake(37.320651, -122.04536)
             }
-            else if start == "atc" || destination == "ATC"{
+            else if start == "atc" || start == "ATC"{
                 sourceCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
             }
+            else{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
+            }/*
+            else if start == "l21" || start == "L21"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044685)
+            }
+            else if start == "l22" || start == "L22"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044683)
+            }
+            else if start == "l23" || start == "L23"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044684)
+            }
+            else if start == "l24" || start == "L24"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321122, -122.044684)
+            }
+            else if start == "l36" || start == "L36"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321120, -122.044685)
+            }
+            else if start == "l34" || start == "L34"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if start == "l35" || start == "L35"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if start == "l41" || start == "L41"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if start == "l49" || start == "L49"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044686)
+            }
+            else if start == "l48" || start == "L48"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044682)
+            }
+            else if start == "l47" || start == "L47"{
+                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044684)
+            }*/
         }
         
         if let destination = destination{
+            /*
+            switch destination{
+            case "library":
+                destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
+            case "cafe":
+                destinationCoordinates = CLLocationCoordinate2DMake(37.320651, -122.04536)
+            case "atc":
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
+            case "ATC":
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
+            default:
+                destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
+            }*/
+
             
             if destination == "library" {
                 destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
@@ -216,51 +277,101 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             else if destination == "atc" || destination == "ATC"{
                 destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
             }
+                /*
+            else if destination == "l21" || destination == "L21"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044685)
+                print("here------------------------------------------------")
+            }
+            else if destination == "l22" || destination == "L22"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044683)
+            }
+            else if destination == "l23" || destination == "L23"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044684)
+            }
+            else if destination == "l24" || destination == "L24"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321122, -122.044684)
+            }
+            else if destination == "l36" || destination == "L36"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321120, -122.044685)
+            }
+            else if destination == "l34" || destination == "L34"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if destination == "l35" || destination == "L35"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if destination == "l41" || destination == "L41"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
+            }
+            else if destination == "l49" || destination == "L49"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044686)
+            }
+            else if destination == "l48" || destination == "L48"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044682)
+            }
+            else if destination == "l47" || destination == "L47"{
+                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044684)
+            }
+ */
             else{
                 destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
             }
         }
+        
+        //beginPoint = sourceCoordinates!
+        //endPoint = destinationCoordinates
+        
+        //beginName = startPoint!
+        
+        
+        
+        
+    
 
         // Annotation pin
-        startPin = AnnotationPin(title: startPoint!, subtitle: "", coordinate: sourceCoordinates!)
-        endPin = AnnotationPin(title: destination!, subtitle: "", coordinate: destinationCoordinates)
-        mapKitView.addAnnotation(startPin as! MKAnnotation)
-        mapKitView.addAnnotation(endPin as! MKAnnotation)
-
-        // Put the coordinates we just set up into startpoint and endpoint
-        let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinates!)
-        let destinationPlaceMark = MKPlacemark(coordinate: destinationCoordinates)
-        
-        let sourceItem = MKMapItem(placemark: sourcePlaceMark)
-        let destinationItem = MKMapItem(placemark: destinationPlaceMark)
-        
-        // Navigation
-        let directionRequest = MKDirectionsRequest()
-        directionRequest.source = sourceItem
-        directionRequest.destination = destinationItem
-        directionRequest.transportType = .walking
-        
-        let directions = MKDirections(request: directionRequest)
-        directions.calculate(completionHandler: {
-            response, error in
+        if sourceCoordinates != nil && startPoint != nil && destination != nil{
             
-            guard let response = response else{
-                if let error = error{
-                    print("Something's wrong.")
+            startPin = AnnotationPin(title: startPoint!, subtitle: "", coordinate: sourceCoordinates!)
+            endPin = AnnotationPin(title: destination!, subtitle: "", coordinate: destinationCoordinates)
+            
+            mapKitView.addAnnotation(startPin as! MKAnnotation)
+            mapKitView.addAnnotation(endPin as! MKAnnotation)
+            
+            // Put the coordinates we just set up into startpoint and endpoint
+            let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinates!)
+            let destinationPlaceMark = MKPlacemark(coordinate: destinationCoordinates)
+            
+            let sourceItem = MKMapItem(placemark: sourcePlaceMark)
+            let destinationItem = MKMapItem(placemark: destinationPlaceMark)
+            
+            // Navigation
+            let directionRequest = MKDirectionsRequest()
+            directionRequest.source = sourceItem
+            directionRequest.destination = destinationItem
+            directionRequest.transportType = .walking
+            
+            let directions = MKDirections(request: directionRequest)
+            directions.calculate(completionHandler: {
+                response, error in
+                
+                guard let response = response else{
+                    if let error = error{
+                        print("Something's wrong.")
+                    }
+                    return
                 }
-                return
-            }
+                
+                let route = response.routes[0]
+                self.mapKitView.add(route.polyline, level: .aboveRoads)
+                
+                let rekt = route.polyline.boundingMapRect
+                self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
+            })
             
-            let route = response.routes[0]
-            self.mapKitView.add(route.polyline, level: .aboveRoads)
-            
-            let rekt = route.polyline.boundingMapRect
-            self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
-        })
-        
-        // Do any additional setup after loading the view.
+            // Do any additional setup after loading the view.
+        }
     }
-    
+    // Draw the navigation line.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.blue
@@ -268,19 +379,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
         return renderer
     }
-/*
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading location: [CLLocation]) {
-        
-        let location = location[0]
-        let center = location.coordinate
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(center, span)
-        
-        mapKitView.setRegion(region, animated: true)
-        mapKitView.showsUserLocation = true
-        
-    }
- */
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
