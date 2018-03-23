@@ -8,6 +8,7 @@
 
 import UIKit
 
+var count = 0
 class ViewController: UIViewController{
     
     //Local variables
@@ -30,6 +31,10 @@ class ViewController: UIViewController{
     
     @IBAction func clickToNextPage(_ sender: Any) {
         performSegue(withIdentifier: "segue", sender: self)
+    }
+    
+    func addCount(){
+        count = count + 1
     }
     
     @objc func updater(){
@@ -68,6 +73,7 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addCount()
         //background color setting
         let GRAY_THEME = UIColor(displayP3Red: 204 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1.0)
         view.backgroundColor = GRAY_THEME

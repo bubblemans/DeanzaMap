@@ -13,6 +13,7 @@ var beginPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var endPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var beginName = ""
 var endName = ""
+var timer = 10000
 
 class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -21,7 +22,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var startPoint: String?
     var startPin: AnnotationPin!
     var endPin: AnnotationPin!
-    
     
     struct Location{
         var name: String
@@ -40,6 +40,10 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet var mapKitView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
+    @IBOutlet weak var popOutMessage: UITextView!
+    @IBOutlet weak var popOutView: UIView!
+
     // Action
     @IBAction func changeToSearchPage(_ sender: Any) {
         performSegue(withIdentifier: "segue2", sender: self)
@@ -49,6 +53,10 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     @IBAction func clickToContact(_ sender: Any) {
         performSegue(withIdentifier: "segueToContact", sender: self)
+    }
+    @IBAction func cacelPopOut(_ sender: Any) {
+        popOutView.isHidden = true
+        navigationBar.isHidden = false
     }
     
     
@@ -131,6 +139,14 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     
+    @objc func updateTimer(){
+        if timer == 0 {
+            timer = timer - 2;
+            popOutView.isHidden = false
+        }
+        timer = timer - 1
+    }
+    
     
     func createLocationArray(){
         let library = Location(name: "library", x: 37.3203, y: -122.0467)
@@ -153,7 +169,11 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        
+        
 
+    
         //homeButton
         //homeButton.layer.cornerRadius = 7.5
         
@@ -173,9 +193,18 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //navigationBar
         navigationBar.backgroundColor = UIColor(displayP3Red: 54/255, green: 72/255, blue: 94/255, alpha: 1)
         
-        
-        
-        
+        popOutMessage.text = ""
+        popOutView.isHidden = true
+        /*
+        if count == 2 {
+            popOutView.isHidden = false
+            navigationBar.isHidden = true
+        }
+        else {
+            popOutView.isHidden = true
+        }
+        */
+
         
         
         //mapKitView
