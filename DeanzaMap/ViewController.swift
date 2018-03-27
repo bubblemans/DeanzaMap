@@ -79,7 +79,7 @@ class ViewController: UIViewController{
         super.viewDidLoad()
         
         //background color setting
-        view.backgroundColor = GRAY_THEME
+        view.backgroundColor = GRAYTHEME
 
         //loadingBar
         loadingBar.tintColor = .black

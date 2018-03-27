@@ -13,7 +13,7 @@ var beginPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var endPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var beginName = ""
 var endName = ""
-var timer = 10000
+var timer = 60
 
 class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -43,7 +43,8 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var popOutMessage: UITextView!
     @IBOutlet weak var popOutView: UIView!
-
+    @IBOutlet weak var cancelButton: UIButton!
+    
     // Action
     @IBAction func changeToSearchPage(_ sender: Any) {
         performSegue(withIdentifier: "segue2", sender: self)
@@ -168,10 +169,21 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Countdown timer
         var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         
+        //popOut
+        popOutMessage.layer.cornerRadius = 7.5
+        cancelButton.layer.cornerRadius = 7.5
+        cancelButton.backgroundColor = UIColor.white
+        popOutView.backgroundColor = BLUETHEME
+        
+        //popOutMessage
+        popOutMessage.text = POPOUTMESSAGE
+        popOutView.isHidden = true
+        
         //sideBar
-        //sideBar.layer.cornerRadius = 7.5
         sideBar.layer.shadowColor = UIColor.black.cgColor
         sideBar.layer.shadowOpacity = 1
         sideBar.layer.shadowOffset = CGSize(width: 5, height: 5)
@@ -181,11 +193,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         sideBarConstraint.constant = -175
         
         //navigationBar
-        navigationBar.backgroundColor = UIColor(displayP3Red: 54/255, green: 72/255, blue: 94/255, alpha: 1)
+        navigationBar.backgroundColor = BLUETHEME
         
-        //popOutMessage
-        popOutMessage.text = ""
-        popOutView.isHidden = true
+        
         /*
         if count == 2 {
             popOutView.isHidden = false
@@ -293,7 +303,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             })
         }
     }
-    // Draw the navigation line.
+    /**
+     Draw the navigation line.
+     */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(overlay: overlay)

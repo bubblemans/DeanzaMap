@@ -10,14 +10,20 @@ import UIKit
 
 class ContactViewController: UIViewController {
 
+    //IBOutlet
+    @IBOutlet weak var navigationBar: UIView!
     
+    //IBAction
     @IBAction func clickConToMap(_ sender: Any) {
         performSegue(withIdentifier: "segueConToMap", sender: self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //navigationBar
+        navigationBar.backgroundColor = BLUETHEME
+        
         // Do any additional setup after loading the view.
     }
 
