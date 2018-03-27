@@ -11,7 +11,9 @@ import UIKit
 class ThirdViewController: UIViewController {
     
     @IBAction func clickToAbout(_ sender: Any) {
-    performSegue(withIdentifier: "segueAboutToMap", sender: self)}
+    performSegue(withIdentifier: "segueAboutToMap", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +25,7 @@ class ThirdViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Hide the status bar
     override var prefersStatusBarHidden: Bool{
         return true;
     }

@@ -22,14 +22,16 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var startPoint: String?
     var startPin: AnnotationPin!
     var endPin: AnnotationPin!
-    
+
+    // declare a struct to contain location
+    /*
     struct Location{
         var name: String
         var x: Double
         var y: Double
     }
     var location:[Location] = []
-    
+    */
     
     // Outlet
     @IBOutlet weak var sideBarConstraint: NSLayoutConstraint!
@@ -39,8 +41,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet weak var navigationBarConstraint: NSLayoutConstraint!
     @IBOutlet var mapKitView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     @IBOutlet weak var popOutMessage: UITextView!
     @IBOutlet weak var popOutView: UIView!
 
@@ -58,9 +58,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         popOutView.isHidden = true
         navigationBar.isHidden = false
     }
-    
-    
-    
     
     // When click the menu button, it will slide out the sida bar.
     @IBAction func menuButton(_ sender: Any) {
@@ -138,7 +135,9 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         
     }
     
-    
+    /**
+    This function update the timer
+    */
     @objc func updateTimer(){
         if timer == 0 {
             timer = timer - 2;
@@ -147,7 +146,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         timer = timer - 1
     }
     
-    
+    /*
     func createLocationArray(){
         let library = Location(name: "library", x: 37.3203, y: -122.0467)
         let cafe = Location(name: "cafe", x: 37.320651, y: -122.04536)
@@ -158,7 +157,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         location.append(cafe)
         location.append(atc)
         location.append(ATC)
-    }
+    }*/
     
     //switch to the search but don't show the progress bar
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -170,15 +169,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     override func viewDidLoad() {
         super.viewDidLoad()
         var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        
-        
-
-    
-        //homeButton
-        //homeButton.layer.cornerRadius = 7.5
-        
-        //blurSideBar
-        //blurSideBar.layer.cornerRadius = 7.5
         
         //sideBar
         //sideBar.layer.cornerRadius = 7.5
@@ -193,6 +183,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         //navigationBar
         navigationBar.backgroundColor = UIColor(displayP3Red: 54/255, green: 72/255, blue: 94/255, alpha: 1)
         
+        //popOutMessage
         popOutMessage.text = ""
         popOutView.isHidden = true
         /*
@@ -205,8 +196,6 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
         */
 
-        
-        
         //mapKitView
         mapKitView.delegate = self
         mapKitView.showsScale = true
@@ -244,58 +233,10 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             }
             else{
                 destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
-            }/*
-            else if start == "l21" || start == "L21"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044685)
             }
-            else if start == "l22" || start == "L22"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044683)
-            }
-            else if start == "l23" || start == "L23"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044684)
-            }
-            else if start == "l24" || start == "L24"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321122, -122.044684)
-            }
-            else if start == "l36" || start == "L36"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321120, -122.044685)
-            }
-            else if start == "l34" || start == "L34"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if start == "l35" || start == "L35"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if start == "l41" || start == "L41"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if start == "l49" || start == "L49"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044686)
-            }
-            else if start == "l48" || start == "L48"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044682)
-            }
-            else if start == "l47" || start == "L47"{
-                sourceCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044684)
-            }*/
         }
         
         if let destination = destination{
-            /*
-            switch destination{
-            case "library":
-                destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
-            case "cafe":
-                destinationCoordinates = CLLocationCoordinate2DMake(37.320651, -122.04536)
-            case "atc":
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
-            case "ATC":
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
-            default:
-                destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
-            }*/
-
-            
             if destination == "library" {
                 destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
             }
@@ -306,57 +247,11 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             else if destination == "atc" || destination == "ATC"{
                 destinationCoordinates = CLLocationCoordinate2DMake(37.321018, -122.044512)
             }
-                /*
-            else if destination == "l21" || destination == "L21"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044685)
-                print("here------------------------------------------------")
-            }
-            else if destination == "l22" || destination == "L22"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044683)
-            }
-            else if destination == "l23" || destination == "L23"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044684)
-            }
-            else if destination == "l24" || destination == "L24"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321122, -122.044684)
-            }
-            else if destination == "l36" || destination == "L36"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321120, -122.044685)
-            }
-            else if destination == "l34" || destination == "L34"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if destination == "l35" || destination == "L35"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if destination == "l41" || destination == "L41"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044683)
-            }
-            else if destination == "l49" || destination == "L49"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044686)
-            }
-            else if destination == "l48" || destination == "L48"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321121, -122.044682)
-            }
-            else if destination == "l47" || destination == "L47"{
-                destinationCoordinates = CLLocationCoordinate2DMake(37.321119, -122.044684)
-            }
- */
             else{
                 destinationCoordinates = CLLocationCoordinate2DMake(37.3203, -122.0467)
             }
         }
         
-        //beginPoint = sourceCoordinates!
-        //endPoint = destinationCoordinates
-        
-        //beginName = startPoint!
-        
-        
-        
-        
-    
-
         // Annotation pin
         if sourceCoordinates != nil && startPoint != nil && destination != nil{
             
@@ -396,16 +291,14 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 let rekt = route.polyline.boundingMapRect
                 self.mapKitView.setRegion(MKCoordinateRegionForMapRect(rekt), animated: true)
             })
-            
-            // Do any additional setup after loading the view.
         }
     }
     // Draw the navigation line.
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.blue
         renderer.lineWidth = 1.0
-        
         return renderer
     }
 
@@ -413,8 +306,8 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    // Hide the status bar
     override var prefersStatusBarHidden: Bool{
         return true;
     }

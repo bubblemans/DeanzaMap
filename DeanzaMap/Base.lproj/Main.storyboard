@@ -506,7 +506,6 @@
         <image name="search" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tK0-SI-w9B"/>
-        <segue reference="cdU-0x-YK5"/>
+        <segue reference="1rd-Zj-Blb"/>
     </inferredMetricsTieBreakers>
 </document>

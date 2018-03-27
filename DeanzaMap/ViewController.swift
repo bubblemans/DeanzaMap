@@ -33,10 +33,14 @@ class ViewController: UIViewController{
         performSegue(withIdentifier: "segue", sender: self)
     }
     
+    /*
     func addCount(){
         count = count + 1
-    }
+    }*/
     
+    /**
+    The function update the progress bar.
+    */
     @objc func updater(){
         spinner.startAnimating()
         if minValue != maxValue {
@@ -58,6 +62,9 @@ class ViewController: UIViewController{
         }
     }
  
+    /**
+     This function pass startpoint and endpoint input by users to SecondViewController
+    */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SecondViewController{
             destination.destination = searchBar.text
@@ -68,22 +75,17 @@ class ViewController: UIViewController{
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addCount()
         //background color setting
-        let GRAY_THEME = UIColor(displayP3Red: 204 / 255, green: 204 / 255, blue: 204 / 255, alpha: 1.0)
         view.backgroundColor = GRAY_THEME
 
-        //loadingBar.frame = CGRect(x: 70, y: 400, width: 250, height: 0)
+        //loadingBar
         loadingBar.tintColor = .black
         loadingBar.trackTintColor = .white
         loadingBar.setProgress(0, animated: false)
         loading = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.updater), userInfo: nil, repeats: true)
-        
         
         //spinner
         spinner.color = .white
