@@ -8,18 +8,35 @@
 
 import UIKit
 
-class ContactViewController: UIViewController {
+class ContactViewController: UIViewController{
 
+    let link = ["facebook", "instagram", "github"]
     //IBOutlet
     @IBOutlet weak var navigationBar: UIView!
-    
+
     //IBAction
     @IBAction func clickConToMap(_ sender: Any) {
         performSegue(withIdentifier: "segueConToMap", sender: self)
     }
-    
+    @IBAction func clickToGithub(_ sender: Any) {
+        if let url = NSURL(string: "https://github.com/bubblemans"){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func clickToInstagram(_ sender: Any) {
+        if let url = NSURL(string: "https://www.instagram.com/hong_yeh1846/"){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
+    @IBAction func clickToFacebook(_ sender: Any) {
+        if let url = NSURL(string: "https://www.facebook.com/fa.ke.169"){
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        view.backgroundColor = GRAYTHEME
         
         //navigationBar
         navigationBar.backgroundColor = BLUETHEME
@@ -36,14 +53,4 @@ class ContactViewController: UIViewController {
     override var prefersStatusBarHidden: Bool{
         return true;
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -418,30 +418,36 @@
                                     <constraint firstItem="3t9-7Z-HUd" firstAttribute="top" secondItem="DdP-qT-6la" secondAttribute="top" id="uJY-cS-i35"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fhw-8e-oRm">
-                                <rect key="frame" x="0.0" y="40" width="375" height="627"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nFi-vU-Iag">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nFi-vU-Iag" id="BMA-ws-Ta7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2a-Q1-VfO">
+                                <rect key="frame" x="89" y="175" width="178" height="178"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="facebook"/>
+                                <connections>
+                                    <action selector="clickToFacebook:" destination="n0x-M4-njw" eventType="touchUpInside" id="D5T-Vy-fYB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZ7-px-wzO">
+                                <rect key="frame" x="121" y="354" width="115" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="instagram"/>
+                                <connections>
+                                    <action selector="clickToInstagram:" destination="n0x-M4-njw" eventType="touchUpInside" id="xtd-Ju-v8z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvJ-5Q-5iu">
+                                <rect key="frame" x="121" y="509" width="115" height="118"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="github"/>
+                                <connections>
+                                    <action selector="clickToGithub:" destination="n0x-M4-njw" eventType="touchUpInside" id="8IA-IS-1Id"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="DdP-qT-6la" firstAttribute="leading" secondItem="LL2-J7-uFn" secondAttribute="leading" id="8TN-aR-guQ"/>
-                            <constraint firstItem="fhw-8e-oRm" firstAttribute="top" secondItem="DdP-qT-6la" secondAttribute="bottom" id="Cue-6c-2YZ"/>
                             <constraint firstItem="LL2-J7-uFn" firstAttribute="trailing" secondItem="DdP-qT-6la" secondAttribute="trailing" id="Im8-1D-iMg"/>
-                            <constraint firstItem="LL2-J7-uFn" firstAttribute="trailing" secondItem="fhw-8e-oRm" secondAttribute="trailing" id="Srk-YK-EHm"/>
                             <constraint firstItem="DdP-qT-6la" firstAttribute="top" secondItem="865-6H-a0c" secondAttribute="top" id="VdS-T7-jep"/>
-                            <constraint firstItem="LL2-J7-uFn" firstAttribute="bottom" secondItem="fhw-8e-oRm" secondAttribute="bottom" id="gKo-ls-Lx5"/>
-                            <constraint firstItem="fhw-8e-oRm" firstAttribute="leading" secondItem="LL2-J7-uFn" secondAttribute="leading" id="zdj-DN-H9j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LL2-J7-uFn"/>
                     </view>
@@ -451,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHp-V7-Gm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="910" y="969"/>
+            <point key="canvasLocation" x="909.60000000000002" y="968.36581709145435"/>
         </scene>
     </scenes>
     <resources>
@@ -459,6 +465,9 @@
         <image name="Doudou" width="3024" height="4032"/>
         <image name="SF" width="183" height="275"/>
         <image name="de-anza-pacman-font" width="166" height="59"/>
+        <image name="facebook" width="512" height="512"/>
+        <image name="github" width="512" height="512"/>
+        <image name="instagram" width="398" height="398"/>
         <image name="just_pacman" width="355" height="221"/>
         <image name="pacman_about" width="150" height="34"/>
         <image name="pacman_contact" width="150" height="34"/>
@@ -468,6 +477,6 @@
         <image name="search" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SsJ-Ib-d89"/>
+        <segue reference="HWe-04-Oup"/>
     </inferredMetricsTieBreakers>
 </document>
