@@ -13,7 +13,7 @@ var beginPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var endPoint = CLLocationCoordinate2D(latitude: 0,longitude: 0)
 var beginName = ""
 var endName = ""
-var timer = 60
+var timer = 30
 
 class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
