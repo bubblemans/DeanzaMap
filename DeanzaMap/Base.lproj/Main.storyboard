@@ -477,6 +477,7 @@
         <image name="search" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="1qe-eO-klk"/>
         <segue reference="SsJ-Ib-d89"/>
     </inferredMetricsTieBreakers>
 </document>
