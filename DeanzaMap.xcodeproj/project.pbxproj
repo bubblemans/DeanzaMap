@@ -66,10 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				E12E1D80203E9AD9003870E8 /* AppDelegate.swift */,
-				E18666A5206AF609008170F1 /* AboutUsViewController.swift */,
 				E12E1D82203E9AD9003870E8 /* ViewController.swift */,
 				E12E1D9B2042328A003870E8 /* SecondViewController.swift */,
 				E186663B205CD7B0008170F1 /* ContactViewController.swift */,
+				E18666A5206AF609008170F1 /* AboutUsViewController.swift */,
 				E186669D206ADCF4008170F1 /* CONSTANT.swift */,
 				E17714802058E0B20050DF77 /* AnnotationPin.swift */,
 				E12E1D84203E9AD9003870E8 /* Main.storyboard */,
@@ -114,7 +114,7 @@
 					E12E1D7C203E9AD9003870E8 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -298,9 +298,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NG87J4X424;
 				INFOPLIST_FILE = DeanzaMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -319,9 +320,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NG87J4X424;
 				INFOPLIST_FILE = DeanzaMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
